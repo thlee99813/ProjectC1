@@ -10,7 +10,6 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] private CinemachineImpulseSource source;
 
-    [SerializeField] private int repeatCount = 10;
     [SerializeField] private float repeatInterval = 0.12f;
 
     private Coroutine impulseBurstRoutine;
