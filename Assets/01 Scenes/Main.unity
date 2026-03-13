@@ -17740,6 +17740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
   movespeed: 6
+  mouseSensitivity: 100
 --- !u!1 &8504259710121693035
 GameObject:
   m_ObjectHideFlags: 0
