@@ -6,10 +6,15 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float movespeed = 6f;
     [SerializeField] private float mouseSensitivity = 100f;
 
+    [Header("PlayerObject")]
+
     private Rigidbody rb;
+    [SerializeField] private GameObject laser;
+    
     private Vector3 inputMove;
     private Vector3 targetPos;
     private bool isMoving;
+
     
     void Awake()
     {
@@ -23,7 +28,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        GetInput();
+        //GetInput();
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
@@ -35,16 +40,25 @@ public class PlayerMove : MonoBehaviour
             Vector3 dir = hitPoint - transform.position;
             dir.y = 0f;
 
-            if (dir.sqrMagnitude > 0.01f)
+            //플레이어가 보는 방향으로 회전
+            if (dir.sqrMagnitude > 0.01f) // 플레이어 오브젝트 중심에 마우스 가져다댔을때 떨림 방지
             {
                 transform.rotation = Quaternion.LookRotation(dir);
             }
+            //플레이어가 우클릭 눌렀을때 그 곳으로 이동
+
             if (Mouse.current.rightButton.wasPressedThisFrame)
             {
 
                     targetPos = ray.GetPoint(distance);
                     targetPos.y = rb.position.y;
                     isMoving = true;
+            }
+            //플레이어 좌클릭 시 레이저 발사
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+
+                    laser.SetActive(true);
             }
         }
         
@@ -53,6 +67,12 @@ public class PlayerMove : MonoBehaviour
 
 
     void FixedUpdate()
+    {
+        UpdateMove();
+    }
+
+
+    public void UpdateMove()
     {
         Vector3 pos = rb.position + inputMove * movespeed * Time.fixedDeltaTime;
         rb.MovePosition(pos);
@@ -73,7 +93,7 @@ public class PlayerMove : MonoBehaviour
             rb.MovePosition(nextPos);
         }
     }
-
+/*
     private void GetInput()
     {        
         Vector2 move = Vector2.zero;
@@ -85,5 +105,5 @@ public class PlayerMove : MonoBehaviour
         move = move.normalized;
         inputMove = new Vector3(move.x, 0f, move.y);
     }
-
+*/
 }
