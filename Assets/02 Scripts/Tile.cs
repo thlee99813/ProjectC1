@@ -6,9 +6,17 @@ public class Tile : MonoBehaviour
 
     [SerializeField] private float durationvalue = 2f;
     [SerializeField] private float moveHeight = 4f;
+    [SerializeField] private int stageIndex;
+
+    private Vector3 startPos;
+
     private Coroutine moveRoutine;
 
-    
+
+    void Start()
+    {
+        startPos = transform.localPosition;
+    }
     public void MoveUp()
         {
             StartMove(moveHeight);
@@ -28,8 +36,19 @@ public class Tile : MonoBehaviour
 
         moveRoutine = StartCoroutine(MoveTile(dir));
     }
-    private IEnumerator MoveTile(float dir)
+    public void ResetTile()
+    {
+        if (moveRoutine != null)
         {
+            StopCoroutine(moveRoutine);
+            moveRoutine = null;
+        }
+        gameObject.SetActive(true);
+
+        transform.localPosition = startPos;
+    }
+    private IEnumerator MoveTile(float dir)
+        { 
             float elapsed = 0f;
             Vector3 startPos = transform.localPosition;
             Vector3 endPos = new Vector3 (startPos.x, startPos.y + dir, startPos.z);

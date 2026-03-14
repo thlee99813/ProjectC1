@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 
     [Header("PlayerObject")]
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     
 
     private Vector3 inputMove;
@@ -56,7 +56,7 @@ public class PlayerMove : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(dir);
             }
             //플레이어가 우클릭 눌렀을때 그 곳으로 이동
-            /*
+            /*dd
             if (Mouse.current.rightButton.wasPressedThisFrame)
             {
 

@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 8824183165636623397}
   - component: {fileID: 8568076057692125172}
   m_Layer: 0
-  m_Name: LaserFixer
+  m_Name: LaserFixerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
