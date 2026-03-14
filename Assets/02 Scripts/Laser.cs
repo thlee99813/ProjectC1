@@ -11,6 +11,8 @@ public class Laser : MonoBehaviour
 
     [SerializeField] private int maxBounce = 5;
     [SerializeField] private float hitOffset = 0.01f;
+    [SerializeField] private bool FixedLaser = false;
+
 
 
     [SerializeField] private LineRenderer line;
@@ -54,15 +56,21 @@ public class Laser : MonoBehaviour
 
     void Update()
     {
-         if (laserEnd) return;
+        if (laserEnd) return;
 
         laserTime += Time.deltaTime * laserSpeed;
         DrawLaser(laserTime);
 
         if (IsLaserFull())
         {
+            Debug.Log("레이저풀");
             laserEnd = true;
-            StartCoroutine(HideLaser());
+
+            if(!FixedLaser)
+            {
+                StartCoroutine(HideLaser(1f));
+            }
+
         }
     }
     private void MakeLaserPath()
@@ -113,12 +121,12 @@ public class Laser : MonoBehaviour
     }
     private void DrawLaser(float nowLength)
     {
-        float leftLength = nowLength;
-        int drawCount = 1;
-        line.positionCount = drawCount;
-        line.SetPosition(0, laserPoints[0]);
+        float leftLength = nowLength; // 그릴수있는 남은 길이
+        int drawCount = 1; // 시작점보장
+        line.positionCount = drawCount; // 라인렌더러 점 개수
+        line.SetPosition(0, laserPoints[0]); // 첫점을 시작점으로 지정
 
-        for (int i = 0; i < laserPoints.Count - 1; i++)
+        for (int i = 0; i < laserPoints.Count - 1; i++) //각 선분별 길이 검사
         {
             Vector3 a = laserPoints[i];
             Vector3 b = laserPoints[i + 1];
@@ -159,10 +167,25 @@ public class Laser : MonoBehaviour
         }
 
 
-    IEnumerator HideLaser() // 래이저 숨기는 작업.
+    IEnumerator HideLaser(float delay) // 래이저 숨기는 작업.
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(delay);
 
         gameObject.SetActive(false);
+    }
+    public void RefreshLaser()
+    {
+        StopAllCoroutines();
+
+        laserTime = 0f;
+        laserEnd = false;
+
+        MakeLaserPath();
+
+        line.positionCount = laserPoints.Count;
+        for (int i = 0; i < laserPoints.Count; i++)
+        {
+            line.SetPosition(i, laserPoints[0]);
+        }
     }
 }

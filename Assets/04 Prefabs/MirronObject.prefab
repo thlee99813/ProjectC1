@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 6640389985301698806}
   - component: {fileID: 7434690059510851996}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: MirronObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
