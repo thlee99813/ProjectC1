@@ -5,7 +5,6 @@ public class Tile : MonoBehaviour
 {
 
     [SerializeField] private float durationvalue = 2f;
-    [SerializeField] private float moveHeight = 4f;
     [SerializeField] private int stageIndex;
 
     private Vector3 startPos;
@@ -17,12 +16,12 @@ public class Tile : MonoBehaviour
     {
         startPos = transform.localPosition;
     }
-    public void MoveUp()
+    public void MoveUp(float moveHeight = 4f)
         {
             StartMove(moveHeight);
         }
 
-    public void MoveDown()
+    public void MoveDown(float moveHeight = 4f)
         {
             StartMove(-moveHeight);
         }

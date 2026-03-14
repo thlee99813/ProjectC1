@@ -12,6 +12,8 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] private float repeatInterval = 0.12f;
 
+    [SerializeField] private CinemachineCamera[] cameras;
+
     private Coroutine impulseBurstRoutine;
 
     private void Awake()
@@ -62,5 +64,23 @@ public class CameraManager : MonoBehaviour
         }
 
         impulseBurstRoutine = null;
+    }
+    public void ChangeStageCamera(int stageIndex)
+    {
+        int camIndex = stageIndex - 1;
+        Debug.Log("카메라 변경 : " + camIndex );
+
+        if (camIndex < 0 || camIndex >= cameras.Length)
+        {
+            Debug.LogWarning("카메라 오류");
+            return;
+        }
+
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            cameras[i].Priority = 0;
+        }
+
+        cameras[camIndex].Priority = 10;
     }
 }
