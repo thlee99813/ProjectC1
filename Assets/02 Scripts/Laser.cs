@@ -1,11 +1,16 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class Laser : MonoBehaviour
 {
     [SerializeField] private float laserLength = 25f;
     [SerializeField] private float laserSpeed = 5f;
     [SerializeField] public bool Isactive = false;
+
+    [SerializeField] private int maxBounce = 5;
+    [SerializeField] private float hitOffset = 0.01f;
 
 
     [SerializeField] private LineRenderer line;
