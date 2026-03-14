@@ -21,6 +21,8 @@ public class Laser : MonoBehaviour
 
     private float laserTime;
     private bool laserEnd = false;
+
+    public float drawTime = 0f;
     
 
 
@@ -39,6 +41,7 @@ public class Laser : MonoBehaviour
 
         MakeLaserPath(); // 활성화했을때 어디로 가야하는지 길(포인트)을 계산해줌
 
+        drawTime = GetLaserFullLength() / laserSpeed;
 
         line.positionCount = laserPoints.Count;
         for (int i = 0; i < laserPoints.Count; i++)
@@ -63,7 +66,6 @@ public class Laser : MonoBehaviour
 
         if (IsLaserFull())
         {
-            Debug.Log("레이저풀");
             laserEnd = true;
 
             if(!FixedLaser)

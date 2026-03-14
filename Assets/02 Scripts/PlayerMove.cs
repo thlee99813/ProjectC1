@@ -4,18 +4,18 @@ public class PlayerMove : MonoBehaviour
 {
     [Header("Move")]
     [SerializeField] private float movespeed = 6f;
-    [SerializeField] private float mouseSensitivity = 100f;
 
     [Header("PlayerObject")]
 
     private Rigidbody rb;
-    [SerializeField] private GameObject laser;
     
+
     private Vector3 inputMove;
     private Vector3 targetPos;
     private bool isMoving;
 
-    
+    public bool PlayerMoveLock = false;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,7 +28,17 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        //GetInput();
+        if(!PlayerMoveLock)
+        {
+            GetInput();  
+        }
+        else
+        {
+            inputMove = Vector3.zero;
+        }
+
+
+
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
@@ -46,7 +56,7 @@ public class PlayerMove : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(dir);
             }
             //플레이어가 우클릭 눌렀을때 그 곳으로 이동
-
+            /*
             if (Mouse.current.rightButton.wasPressedThisFrame)
             {
 
@@ -54,12 +64,8 @@ public class PlayerMove : MonoBehaviour
                     targetPos.y = rb.position.y;
                     isMoving = true;
             }
-            //플레이어 좌클릭 시 레이저 발사
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-
-                    laser.SetActive(true);
-            }
+            */
+            
         }
         
 
@@ -93,7 +99,6 @@ public class PlayerMove : MonoBehaviour
             rb.MovePosition(nextPos);
         }
     }
-/*
     private void GetInput()
     {        
         Vector2 move = Vector2.zero;
@@ -105,5 +110,4 @@ public class PlayerMove : MonoBehaviour
         move = move.normalized;
         inputMove = new Vector3(move.x, 0f, move.y);
     }
-*/
 }

@@ -18,6 +18,7 @@ public class TileManager : MonoBehaviour
     {
         if (Keyboard.current.digit1Key.wasPressedThisFrame)
         {
+            Debug.Log("11");
             Laser.GetComponent<Laser>().RefreshLaser();
             Laser.SetActive(true);        
         }
