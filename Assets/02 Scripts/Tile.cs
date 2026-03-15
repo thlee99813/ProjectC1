@@ -5,10 +5,11 @@ public class Tile : MonoBehaviour
 {
 
     [SerializeField] private float durationvalue = 2f;
+    [SerializeField] private int stageIndex;
 
     private Vector3 startPos;
 
-    public Coroutine moveRoutine;
+    private Coroutine moveRoutine;
 
 
     void Start()
