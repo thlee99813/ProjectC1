@@ -30,7 +30,7 @@ public class Tile : MonoBehaviour
     {
         if (moveRoutine != null)
         {
-            StopCoroutine(moveRoutine);
+            return;
         }
 
         moveRoutine = StartCoroutine(MoveTile(dir));

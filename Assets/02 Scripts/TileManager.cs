@@ -10,18 +10,27 @@ public class TileManager : MonoBehaviour
 
     void Start()
     {
-        //tile = TargetTile.GetComponent<Tile>();
-        //tile.MoveDown();
+
        
     }
     void Update()
     {
         if (Keyboard.current.digit1Key.wasPressedThisFrame)
         {
-            Debug.Log("11");
             Laser.GetComponent<Laser>().RefreshLaser();
             Laser.SetActive(true);        
         }
+        if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            tile = TargetTile.GetComponent<Tile>();
+            tile.MoveDown();        
+        }
+        if (Keyboard.current.digit3Key.wasPressedThisFrame)
+        {
+            tile = TargetTile.GetComponent<Tile>();
+            tile.MoveUp();        
+        }
+
     }
 
 }
