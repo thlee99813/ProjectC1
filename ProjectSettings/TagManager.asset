@@ -12,6 +12,7 @@ TagManager:
   - Item
   - Bullet
   - Mirror
+  - Object
   layers:
   - Default
   - TransparentFX
