@@ -96,7 +96,7 @@ public class Laser : MonoBehaviour
                     dir = Vector3.Reflect(dir, hit.normal);
                     startPos = hit.point + dir * hitOffset;
                 }
-               else if (hit.collider.CompareTag("Wall"))
+                else if (hit.collider.CompareTag("Wall"))
                 {
                     laserPoints.Add(hit.point);
                     break;
@@ -104,6 +104,13 @@ public class Laser : MonoBehaviour
                 else if (hit.collider.CompareTag("Obstacle"))
                 {
                     laserPoints.Add(hit.point);
+                    break;
+                }
+                else if (hit.collider.CompareTag("Object"))
+                {
+                    laserPoints.Add(hit.point);
+                    GameObject hitObject = hit.collider.gameObject;
+                    hitObject.GetComponent<ObjectCube>().LaserTrigger();
                     break;
                 }
                 
