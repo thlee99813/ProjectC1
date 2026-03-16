@@ -4,11 +4,17 @@ public class NextStageTrigger : MonoBehaviour
 {
     public GameObject startDoor;
     public GameObject limitDoor;
+    private bool isTriggered = false;
+
+    
     //[SerializeField] private Transform currentStageWalls;
     void OnTriggerEnter(Collider other)
     {
+        if (isTriggered) return;
+
         if(other.CompareTag("Player"))
         {
+            isTriggered = true;
             StageManager.Instance.NextStage();
             StartCoroutine(WallRoutuine(2f));
 
@@ -27,12 +33,12 @@ public class NextStageTrigger : MonoBehaviour
         limitTile.MoveForward(3.24f);
 
 
-        
+        Player.Instance.LockPlayerMove(false);
+
         yield return new WaitUntil(() => limitTile.moveRoutine == null);
 
         Debug.Log("1초 벽올리기 완료 완료;");
 
-        Player.Instance.LockPlayerMove(false);
         gameObject.SetActive(false);
     }
 }
