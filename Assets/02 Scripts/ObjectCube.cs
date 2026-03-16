@@ -7,7 +7,9 @@ public enum ObjectType
         BlockDown,
         BlockUp,
 
-        Special
+        Special,
+
+        End
     }
 
 public class ObjectCube : MonoBehaviour
@@ -122,6 +124,11 @@ public class ObjectCube : MonoBehaviour
                 rootObject.SetActive(false); 
 
                 break;
+                }
+            case ObjectType.End:
+                {
+                    //엔딩
+                    break;
                 }
 
             default : 
