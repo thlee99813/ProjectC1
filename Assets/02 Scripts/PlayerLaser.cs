@@ -32,11 +32,16 @@ public class PlayerLaser : MonoBehaviour
     IEnumerator PlayerMoveLock(float delay)
     {
         Player.Instance.LockPlayerMove(true);
+        Player.Instance.LockPlayerRotate(true);
+
         yield return new WaitForSeconds(delay + 1f);
         Player.Instance.LockPlayerMove(false);
+        Player.Instance.LockPlayerRotate(false);
+
         moveLockRoutine = null;
     }
-         
+
+      
          
           
     

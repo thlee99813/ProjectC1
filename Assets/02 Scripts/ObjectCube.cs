@@ -34,7 +34,10 @@ public class ObjectCube : MonoBehaviour
 
     void Update()
     {
-        crystal.transform.Rotate(0f, 0f, rotateSpeed * Time.deltaTime);
+        if(crystal != null)
+        {
+            crystal.transform.Rotate(0f, 0f, rotateSpeed * Time.deltaTime);          
+        }
     }
 
     
@@ -105,6 +108,8 @@ public class ObjectCube : MonoBehaviour
     public void ResetCube()
         {
             rootObject.SetActive(true);
+            istriggered = false;
+
         }
 
 }

@@ -25,4 +25,8 @@ public class Player : MonoBehaviour
     {
         playerMove.PlayerMoveLock = Lock;   
     }
+    public void LockPlayerRotate(bool Lock)
+    {
+        playerMove.PlayerRotateLock = Lock;   
+    }
 }

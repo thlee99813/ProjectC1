@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour
     private bool isMoving;
 
     public bool PlayerMoveLock = false;
+    public bool PlayerRotateLock = false;
 
     void Awake()
     {
@@ -37,24 +38,27 @@ public class PlayerMove : MonoBehaviour
             inputMove = Vector3.zero;
         }
 
-
-
-        Vector2 mousePos = Mouse.current.position.ReadValue();
-        Ray ray = Camera.main.ScreenPointToRay(mousePos);
-
-        Plane ground = new Plane(Vector3.up, transform.position);
-
-        if (ground.Raycast(ray, out float distance))
+        if(!PlayerRotateLock)
         {
-            Vector3 hitPoint = ray.GetPoint(distance);
-            Vector3 dir = hitPoint - transform.position;
-            dir.y = 0f;
+            Vector2 mousePos = Mouse.current.position.ReadValue();
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
-            //플레이어가 보는 방향으로 회전
-            if (dir.sqrMagnitude > 0.01f) // 플레이어 오브젝트 중심에 마우스 가져다댔을때 떨림 방지
+            Plane ground = new Plane(Vector3.up, transform.position);
+
+            if (ground.Raycast(ray, out float distance))
             {
-                transform.rotation = Quaternion.LookRotation(dir);
+                Vector3 hitPoint = ray.GetPoint(distance);
+                Vector3 dir = hitPoint - transform.position;
+                dir.y = 0f;
+
+                //플레이어가 보는 방향으로 회전
+                if (dir.sqrMagnitude > 0.01f) // 플레이어 오브젝트 중심에 마우스 가져다댔을때 떨림 방지
+                {
+                    transform.rotation = Quaternion.LookRotation(dir);
+                } 
             }
+
+        
             //플레이어가 우클릭 눌렀을때 그 곳으로 이동
             /*dd
             if (Mouse.current.rightButton.wasPressedThisFrame)

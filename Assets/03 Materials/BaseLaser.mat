@@ -103,7 +103,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _ObjectHeight: 4.8
+    - _ObjectHeight: 20
     - _OcclusionStrength: 1
     - _OffsetPoint: 0
     - _Parallax: 0.005
