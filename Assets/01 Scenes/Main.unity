@@ -8582,8 +8582,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cd2d676ee44434c8c0bc4837e48480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextStageTrigger
-  startDoor: {fileID: 0}
-  limitDoor: {fileID: 0}
+  startDoor: {fileID: 1940885165}
+  limitDoor: {fileID: 249182564}
 --- !u!65 &356727250
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13552,8 +13552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cd2d676ee44434c8c0bc4837e48480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextStageTrigger
-  startDoor: {fileID: 0}
-  limitDoor: {fileID: 0}
+  startDoor: {fileID: 561495450}
+  limitDoor: {fileID: 1661340109}
 --- !u!65 &642585997
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30058,8 +30058,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cd2d676ee44434c8c0bc4837e48480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextStageTrigger
-  startDoor: {fileID: 0}
-  limitDoor: {fileID: 0}
+  startDoor: {fileID: 2147155029}
+  limitDoor: {fileID: 874834974}
 --- !u!65 &1495263774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32940,8 +32940,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cd2d676ee44434c8c0bc4837e48480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextStageTrigger
-  startDoor: {fileID: 0}
-  limitDoor: {fileID: 0}
+  startDoor: {fileID: 1173330811}
+  limitDoor: {fileID: 949632884}
 --- !u!65 &1613403903
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34127,8 +34127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cd2d676ee44434c8c0bc4837e48480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextStageTrigger
-  startDoor: {fileID: 0}
-  limitDoor: {fileID: 0}
+  startDoor: {fileID: 212600770}
+  limitDoor: {fileID: 493374219}
 --- !u!65 &1675569285
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41438,8 +41438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cd2d676ee44434c8c0bc4837e48480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextStageTrigger
-  startDoor: {fileID: 0}
-  limitDoor: {fileID: 0}
+  startDoor: {fileID: 233346948}
+  limitDoor: {fileID: 1459622909}
 --- !u!65 &1976494139
 BoxCollider:
   m_ObjectHideFlags: 0
