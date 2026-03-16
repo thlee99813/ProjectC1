@@ -24,8 +24,6 @@ public class ObjectCube : MonoBehaviour
 
     [SerializeField] private ObjectType cubeType;
 
-    private bool opendoored = false;
-
 
 
     private bool istriggered = false;
@@ -44,14 +42,10 @@ public class ObjectCube : MonoBehaviour
         switch (cubeType)
         {
             case ObjectType.Door:
-                if(opendoored)
-                {
-                    break;
-                }
                 
                 CameraManager.Instance.PlayImpulseBurst(7);
                 doorObject.GetComponent<Tile>().MoveDown(1f);
-                opendoored = true;
+
 
                 break;
 

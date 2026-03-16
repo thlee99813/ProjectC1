@@ -58,7 +58,6 @@ public class StageManager : MonoBehaviour
 
         Tile[] tiles = currentStageRoot.GetComponentsInChildren<Tile>(true);
         ObjectCube[] objectCubes = currentStageRoot.GetComponentsInChildren<ObjectCube>(true);
-        
 
         for (int i = 0; i < tiles.Length; i++)
         {
