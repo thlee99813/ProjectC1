@@ -1,22 +1,30 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class LobbyManager : MonoBehaviour
 {
 
-    [SerializeField] private string sceneName = "TH_Scene";
+    [SerializeField] private string sceneName = "Main";
+    private bool isTriggered = false;
 
-    [SerializeField] private GameObject startHoverImage;
-    [SerializeField] private GameObject quitHoverImage;
-
-    public void Start()
+    public void StartLobbyTrigger()
     {
-        startHoverImage.SetActive(false);
-        quitHoverImage.SetActive(false);
+        if (isTriggered) return;
 
-
+        isTriggered = true;
+        StartCoroutine(StartGameRoutine());
     }
 
+    IEnumerator StartGameRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        StartGame();
+    }
+
+
+
+  
     public void StartGame()
     {
         SceneManager.LoadScene(sceneName);
@@ -27,22 +35,7 @@ public class LobbyManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void OnStartButtonEnter()
-    {
-        startHoverImage.SetActive(true);
-    }
-    public void OnQuitButtonEnter()
-    {
-        quitHoverImage.SetActive(true);
-    }
-    public void OnStartButtonExit()
-    {
-        startHoverImage.SetActive(false);
-    }
-    public void OnQuitButtonExit()
-    {
-        quitHoverImage.SetActive(false);
-    }      
+    
 
 
 

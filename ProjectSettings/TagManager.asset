@@ -13,6 +13,7 @@ TagManager:
   - Bullet
   - Mirror
   - Object
+  - LobbyTrigger
   layers:
   - Default
   - TransparentFX

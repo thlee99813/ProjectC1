@@ -24,6 +24,7 @@ public class Laser : MonoBehaviour
 
     public float drawTime = 0f;
     
+    private ObjectCube hitCube;
 
 
     void Awake()
@@ -33,6 +34,8 @@ public class Laser : MonoBehaviour
 
     void OnEnable()
     {
+        hitCube = null;
+
         StopAllCoroutines();
 
         Isactive = true;
@@ -65,15 +68,19 @@ public class Laser : MonoBehaviour
         DrawLaser(laserTime);
 
         if (IsLaserFull())
-        {
+    {
             laserEnd = true;
 
-            if(!FixedLaser)
+            if (hitCube != null)
+            {
+                hitCube.LaserTrigger();
+            }
+
+            if (!FixedLaser)
             {
                 StartCoroutine(HideLaser(1f));
             }
-
-        }
+    }
     }
     private void MakeLaserPath()
     {
@@ -110,7 +117,19 @@ public class Laser : MonoBehaviour
                 {
                     laserPoints.Add(hit.point);
                     GameObject hitObject = hit.collider.gameObject;
-                    hitObject.GetComponent<ObjectCube>().LaserTrigger();
+                    hitCube = hitObject.GetComponent<ObjectCube>();
+                    break;
+                }
+                else if (hit.collider.CompareTag("LobbyTrigger"))
+                {
+                    laserPoints.Add(hit.point);
+
+                    LobbyManager lobby = hit.collider.GetComponent<LobbyManager>();
+                    if (lobby != null)
+                    {
+                        lobby.StartLobbyTrigger();
+                    }
+
                     break;
                 }
                 
