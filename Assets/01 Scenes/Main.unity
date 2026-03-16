@@ -44010,8 +44010,9 @@ GameObject:
   - component: {fileID: 2083278950}
   - component: {fileID: 2083278949}
   - component: {fileID: 2083278948}
+  - component: {fileID: 2083278951}
   m_Layer: 6
-  m_Name: Cube
+  m_Name: Trigger_Elevator
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44110,6 +44111,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083278946}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2083278951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083278946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8e19206e9d3b14e8afd6221e2ee658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectCube
+  rotateSpeed: 75
+  crystal: {fileID: 0}
+  rootObject: {fileID: 0}
+  doorObject: {fileID: 0}
+  moveTile: {fileID: 0}
+  cubeType: 0
 --- !u!1001 &2083467734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45533,6 +45552,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1229427806}
     m_Modifications:
+    - target: {fileID: 2684910390251120886, guid: 53f22b8dea9360649b34be1b5eed3e3d, type: 3}
+      propertyPath: m_Range
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2684910390251120886, guid: 53f22b8dea9360649b34be1b5eed3e3d, type: 3}
+      propertyPath: m_Intensity
+      value: 450
+      objectReference: {fileID: 0}
     - target: {fileID: 5337729186121301348, guid: 53f22b8dea9360649b34be1b5eed3e3d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -45586,6 +45613,10 @@ PrefabInstance:
       value: Object_Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 7532985541414871070, guid: 53f22b8dea9360649b34be1b5eed3e3d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716611904582815816, guid: 53f22b8dea9360649b34be1b5eed3e3d, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
