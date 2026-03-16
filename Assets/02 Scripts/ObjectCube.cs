@@ -5,7 +5,9 @@ public enum ObjectType
         Door,
         Destroy,
         BlockDown,
-        BlockUp
+        BlockUp,
+
+        Special
     }
 
 public class ObjectCube : MonoBehaviour
@@ -99,6 +101,28 @@ public class ObjectCube : MonoBehaviour
                 } 
 
                 break;
+            case ObjectType.Special:
+                {
+                if(moveTile.moveRoutine != null)
+                {
+                    return;
+                }
+
+                if(!istriggered)
+                {
+                    istriggered = true;
+                    moveTile.MoveDown();
+                }
+                else
+                {
+                    istriggered = false;
+                    moveTile.MoveUp();                
+
+                }
+                rootObject.SetActive(false); 
+
+                break;
+                }
 
             default : 
 
