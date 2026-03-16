@@ -68,7 +68,6 @@ public class CameraManager : MonoBehaviour
     public void ChangeStageCamera(int stageIndex)
     {
         int camIndex = stageIndex - 1;
-        Debug.Log("카메라 변경 : " + camIndex );
 
         if (camIndex < 0 || camIndex >= cameras.Length)
         {

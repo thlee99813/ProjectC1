@@ -12,7 +12,7 @@ public class StageManager : MonoBehaviour
 
     public Transform[] respawnPoint;
 
-    private Transform currentRespawnPoint;
+    public Transform currentRespawnPoint;
     
     [SerializeField] private Transform[] stageRoots;
 

@@ -24,6 +24,15 @@ public class Tile : MonoBehaviour
         {
             StartMove(-moveHeight);
         }
+    public void MoveForward(float moveHeight = 1f)
+        {
+            if (moveRoutine != null)
+            {
+                return;
+            }
+            moveRoutine = StartCoroutine(MoveTileforward(moveHeight));
+
+        }    
 
     private void StartMove(float dir)
     {
@@ -50,6 +59,22 @@ public class Tile : MonoBehaviour
             float elapsed = 0f;
             Vector3 startPos = transform.localPosition;
             Vector3 endPos = new Vector3 (startPos.x, startPos.y + dir, startPos.z);
+            while (elapsed < durationvalue)
+            {
+                elapsed += Time.deltaTime;
+                float time = Mathf.Clamp01(elapsed / durationvalue);
+                transform.localPosition = Vector3.Lerp(startPos, endPos, time);
+                yield return null;
+            }
+
+            transform.localPosition = endPos;
+            moveRoutine = null;
+        }
+    private IEnumerator MoveTileforward(float dir)
+        { 
+            float elapsed = 0f;
+            Vector3 startPos = transform.localPosition;
+            Vector3 endPos = new Vector3 (startPos.x, startPos.y, startPos.z + dir);
             while (elapsed < durationvalue)
             {
                 elapsed += Time.deltaTime;
