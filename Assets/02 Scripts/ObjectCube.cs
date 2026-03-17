@@ -127,8 +127,8 @@ public class ObjectCube : MonoBehaviour
                 }
             case ObjectType.End:
                 {
-                    //엔딩
-                    break;
+                    StageManager.Instance.StartEnding();
+                        break;                    
                 }
 
             default : 

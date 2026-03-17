@@ -27,6 +27,6 @@ public class Player : MonoBehaviour
     }
     public void LockPlayerRotate(bool Lock)
     {
-        playerMove.PlayerRotateLock = Lock;   
+        playerMove.SetRotateLock(Lock);   
     }
 }

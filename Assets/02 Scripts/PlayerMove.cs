@@ -17,6 +17,9 @@ public class PlayerMove : MonoBehaviour
     public bool PlayerMoveLock = false;
     public bool PlayerRotateLock = false;
 
+    private Quaternion lockRotation;
+
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -56,6 +59,11 @@ public class PlayerMove : MonoBehaviour
                 {
                     transform.rotation = Quaternion.LookRotation(dir);
                 } 
+            }
+            else
+            {
+                transform.rotation = lockRotation;
+                rb.angularVelocity = Vector3.zero;
             }
 
         
@@ -101,6 +109,16 @@ public class PlayerMove : MonoBehaviour
 
             Vector3 nextPos = rb.position + dir * movespeed * Time.fixedDeltaTime;
             rb.MovePosition(nextPos);
+        }
+    }
+    public void SetRotateLock(bool isLock)
+    {
+        PlayerRotateLock = isLock;
+
+        if (isLock)
+        {
+            lockRotation = transform.rotation;
+            rb.angularVelocity = Vector3.zero;
         }
     }
     private void GetInput()

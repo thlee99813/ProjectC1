@@ -12,7 +12,7 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] private float repeatInterval = 0.12f;
 
-    [SerializeField] private CinemachineCamera[] cameras;
+    [SerializeField] public CinemachineCamera[] cameras;
 
     private Coroutine impulseBurstRoutine;
 

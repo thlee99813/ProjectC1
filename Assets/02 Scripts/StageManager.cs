@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using Unity.Cinemachine;
 
 
 public class StageManager : MonoBehaviour
@@ -17,6 +19,12 @@ public class StageManager : MonoBehaviour
     [SerializeField] private Transform[] stageRoots;
 
     [SerializeField] private Transform currentStageRoot;
+
+    [SerializeField] private CinemachineCamera endingCam;
+    [SerializeField] private float camMoveSpeed = 4f;
+    [SerializeField] private float targetZ = -80f;
+    [SerializeField] private CanvasGroup endingCanvas;
+    [SerializeField] private float fadeSpeed = 0.1f;
 
 
     void Awake()
@@ -74,5 +82,38 @@ public class StageManager : MonoBehaviour
 
     }
 
+    public void StartEnding()
+    {
+        endingCam = CameraManager.Instance.cameras[currentStage - 1];
+        StartCoroutine(EndingRoutine());
+    }
+    IEnumerator EndingRoutine()
+    {
+        Player.Instance.LockPlayerMove(true);
+        Player.Instance.LockPlayerRotate(true);
+
+
+        Vector3 targetPos = endingCam.transform.position;
+        targetPos.z = targetZ;
+
+        endingCanvas.alpha = 0f;
+
+
+        while (Mathf.Abs(endingCam.transform.position.z - targetZ) > 0.01f)
+        {
+            endingCam.transform.position = Vector3.MoveTowards(
+                endingCam.transform.position,
+                targetPos,
+                camMoveSpeed * Time.deltaTime
+            );
+            endingCanvas.alpha = Mathf.MoveTowards(endingCanvas.alpha, 1f, fadeSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        endingCam.transform.position = targetPos;
+        endingCanvas.alpha = 1f;
+
+    }
     
 }
